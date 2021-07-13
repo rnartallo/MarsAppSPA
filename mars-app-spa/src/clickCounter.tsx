@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ClickCounter: React.FC = () => {
     let [value, setValue] = useState(1);
-    if (localStorage.getItem('item') !== undefined) {
-        value = Number(localStorage.getItem('item'));
-    }
+    useEffect(() => {
+        setValue(Number(localStorage.getItem('item')))
+    }, [])
     return (
         <>
             <p>{value} people liked the image</p>
@@ -12,7 +12,6 @@ const ClickCounter: React.FC = () => {
                 setValue(value + 1);
                 value += 1;
                 localStorage.setItem('item', String(value));
-                console.log(localStorage);
             }}> Did you like the image? </button >
             <button onClick={() => {
                 setValue(0);
