@@ -13,7 +13,7 @@ const InfoComponent: React.FC<infoComponentProp> = ({ title, paragraph1, paragra
             <h1> {title}</h1>
             <p>{paragraph1}</p>
             <p>{paragraph2}</p>
-            <img src={image} />
+            <img src={image} alt="" />
         </>
     )
 };

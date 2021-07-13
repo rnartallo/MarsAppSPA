@@ -4,7 +4,6 @@ import './App.css';
 import InfoComponent from './infoComponent';
 import ClickCounter from './clickCounter';
 
-
 function App() {
   return (
     <div className="App">
