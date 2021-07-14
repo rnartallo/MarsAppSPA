@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import InfoComponent from './infoComponent';
 import ClickCounter from './clickCounter';
+import Component1 from './Component1';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         >
           Learn React
         </a>
+        <Component1/>
       </header>
     </div>
   );

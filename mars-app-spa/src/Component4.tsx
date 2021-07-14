@@ -2,11 +2,11 @@ import React, { useContext} from 'react'
 import {valueContext } from './Component1'
 
 const Component4: React.FC = () => {
-    let value = useContext(valueContext)
-    console.log(value);
+    let {count,click} = useContext(valueContext)
+    console.log(count);
     return (
         <>
-            <p> {value}</p>
+            <p> {count}</p>
         </>)
 }
 export default Component4

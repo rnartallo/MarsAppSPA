@@ -6,7 +6,7 @@ const Component3: React.FC = () => {
         <>
             <Component4 />
             <p>
-                This is where the message goes
+                We are using the context
             </p>
         </>)
 }

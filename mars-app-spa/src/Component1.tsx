@@ -2,22 +2,25 @@ import React, { createContext, useState } from "react";
 import Component2 from "./Component2"
 import Component3 from "./Component3";
 
-
-export const valueContext = createContext({ value: 0, setValue: IDK ndefined);
-
+export const valueContext = createContext({count:0,click: ()=>{} });
 
 
-const Commponent1: React.FC = () => {
+
+const Component1: React.FC = () => {
     const Provider = valueContext.Provider;
-    const [value, setValue] = useState(0);
-    let pass = { value, setValue }
+    const [count, setCount] = useState(0)
+
+    function click(){
+        setCount(count+1);
+    }
+
     return (
         <>
-            <Provider value={pass}
+        <Provider value={{count, click}}>
             <Component2 />
             <Component3 />
         </Provider>
 
         </>)
 }
-export default Commponent1
+export default Component1
