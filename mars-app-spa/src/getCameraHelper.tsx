@@ -11,13 +11,10 @@ export type Camera = {
 };
 export async function getCameras(rovername: any) {
   var cameralist: SelectOption[] = [];
-  console.log(rovername);
   const url = `http://localhost:8000/rovers/${rovername}/cameras`;
-  console.log(url);
   const {data} = await axios.get(
     `http://localhost:8000/rovers/${rovername}/cameras`
   );
-  console.log(data);
   for (var camera of data) {
     const cameraOption: SelectOption = {
       value: camera.name,
@@ -25,6 +22,5 @@ export async function getCameras(rovername: any) {
     };
     cameralist.push(cameraOption);
   }
-  console.log(cameralist)
   return cameralist;
 }

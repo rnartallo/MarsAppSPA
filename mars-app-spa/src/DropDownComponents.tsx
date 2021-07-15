@@ -51,10 +51,8 @@ const FirstChoice: React.FC = () => {
         clearable={true}
         onChange={async (response) => {
           setrovername(response ? response.value : "");
-          console.log(cameralist);
           cameralist = await getCameras(response?.value);
           setcameralist(cameralist);
-          console.log(cameralist);
         }}
       />
     </div>
@@ -63,8 +61,6 @@ const FirstChoice: React.FC = () => {
 
 const SecondChoice: React.FC = () => {
   let { cameralist, rovername } = useContext(RoverContext);
-  console.log("Here");
-  console.log(cameralist);
   return (
     <div>
       Select a camera

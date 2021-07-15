@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Camera } from './getCameraHelper';
 
 type Photo ={
     id: number,
@@ -6,7 +7,9 @@ type Photo ={
     img_src: string,
     earth_date: string
 }
-export async function getPhotos(camera: any,rovername: string) {
-  const photolist : Photo[] =  await axios.get(`https://localhost:8000/rovers/${rovername}/camera/${camera}`);
-  console.log(photolist)
-  return photolist}
+
+  export async function getPhotos(camera: any, rovername: string): Promise<Photo[]> {
+    const response = await axios.get<Photo[]>(`http://localhost:8000/rovers/${rovername}/camera/${camera}`);
+    console.log(response.data);
+    return response.data;
+  };
