@@ -1,34 +1,31 @@
-import React from 'react';
+import React,{Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import InfoComponent from './infoComponent';
-import ClickCounter from './clickCounter';
-import Component1 from './Component1';
+import Select from 'react-select'
+import {SelectOption,getCameras} from './getCameraHelper'
+import { getPhotos } from './getPhotosHelper';
 
+
+const roverNames: SelectOption[]= [{value: "Curiosity",label: "Curiosity"},{value: "Spirit",label: "Spirit"},{value: "Opportunity",label: "Opportunity"},{value: "Perseverance",label: "Perseverance"}]
+var cameralist: SelectOption[] =[];
+var rovername: any = ""
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <InfoComponent
-          title="NASA"
-          paragraph1="The National Aeronautics and Space Administration is an independent agency of the U.S. federal government responsible for the civilian space program, as well as aeronautics and space research."
-          paragraph2="NASA was established in 1958, succeeding the National Advisory Committee for Aeronautics (NACA). The new agency was to have a distinctly civilian orientation, encouraging peaceful applications in space science."
-          image="https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA15416_hires.jpg"
-        />
-        <ClickCounter />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Component1/>
-      </header>
+    <div className="App-header">
+      {/* <header className="App-header">
+      </header> */}
+      <h1>Pictures from Mars</h1>
+      Select a rover
+      <Select options = {roverNames} autosize = {true} clearable = {true} onChange = {async (response)=>{ 
+        rovername = response?.value;
+        cameralist = await getCameras(response?.value)}}/>
+      Select a camera
+      <Select options = {cameralist} autosize = {true} clearable = {true} onChange = {(response)=>{getPhotos(response?.value,rovername)}}/>
     </div>
   );
 }
+
+
+
 
 export default App;
