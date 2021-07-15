@@ -3,6 +3,7 @@ import Select from "react-select";
 import { getCameras, SelectOption } from "./getCameraHelper";
 import { getPhotos } from "./getPhotosHelper";
 import { Camera } from "./getCameraHelper";
+import { PhotoContext } from "./DropDownAndPhotoComponent";
 
 const roverNames: SelectOption[] = [
   { value: "Curiosity", label: "Curiosity" },
@@ -61,6 +62,7 @@ const FirstChoice: React.FC = () => {
 
 const SecondChoice: React.FC = () => {
   let { cameralist, rovername } = useContext(RoverContext);
+  let { photoList, setphotolist } = useContext(PhotoContext);
   return (
     <div>
       Select a camera
@@ -69,7 +71,8 @@ const SecondChoice: React.FC = () => {
         autosize={true}
         clearable={true}
         onChange={async (response) => {
-          await getPhotos(response?.value, rovername);
+          photoList = await getPhotos(response?.value, rovername);
+          setphotolist(photoList);
         }}
       />
     </div>

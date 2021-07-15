@@ -5,6 +5,7 @@ import Select from "react-select";
 import { SelectOption, getCameras } from "./getCameraHelper";
 import { getPhotos } from "./getPhotosHelper";
 import DropDown from "./DropDownComponents";
+import { DropDownPhotos } from "./DropDownAndPhotoComponent";
 
 const roverNames: SelectOption[] = [
   { value: "Curiosity", label: "Curiosity" },
@@ -23,7 +24,7 @@ function App() {
       </header> */}
       <h1>Pictures from Mars</h1>
       Select a rover
-      <DropDown />
+      <DropDownPhotos />
     </div>
   );
 }
