@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { valueContext } from './Component1';
 
 

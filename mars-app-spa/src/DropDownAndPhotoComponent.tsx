@@ -1,6 +1,5 @@
 import React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
-import Select from "react-select";
 import DropDown from "./DropDownComponents";
 import {Photo} from "./getPhotosHelper"
 export const PhotoContext = createContext({
@@ -37,11 +36,11 @@ const Photos: React.FC = () => {
         return (<div/>)
     }
     else{
-    const len = Math.min(photoList.length,5);
+    //const len = Math.min(photoList.length,5);
     return(
         <div>
-            Displaying {len} of {photoList.length} results matching your search criteria
-        {photoList.slice(0,len).map((photo) => (
+            Displaying {photoList.length} of {photoList.length} results matching your search criteria
+        {photoList.slice(0,photoList.length).map((photo) => (
         <figure>
         <img src={photo.img_src}/>
         <figcaption > <b> PhotoID = {photo.id}, Sol = {photo.sol}, Earth Date ={photo.earth_date}  </b>

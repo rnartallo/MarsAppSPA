@@ -1,10 +1,5 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Select from "react-select";
 import { SelectOption, getCameras } from "./getCameraHelper";
-import { getPhotos } from "./getPhotosHelper";
-import DropDown from "./DropDownComponents";
 import { DropDownPhotos } from "./DropDownAndPhotoComponent";
 
 

@@ -1,13 +1,10 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import Select from "react-select";
 import NumericInput from "react-numeric-input"
 import { getCameras, SelectOption } from "./getCameraHelper";
 import { getPhotos } from "./getPhotosHelper";
-import { Camera } from "./getCameraHelper";
 import { PhotoContext } from "./DropDownAndPhotoComponent";
 import { getMaxSol, getTotalPhotos, Sollog } from "./solhelper";
-import { Mission } from "./solhelper";
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
 
 const roverNames: SelectOption[] = [
   { value: "Curiosity", label: "Curiosity" },
@@ -59,8 +56,12 @@ const DropDown: React.FC = () => {
     <div>
       <Provider value={{ cameralist, rovername, setcameralist, setrovername,sol,setsol,max_sol,setmaxsol,total_photos,settotalphotos }}>
         <FirstChoice />
-        <SecondChoice />
-        <ThirdChoice/>
+        {rovername && 
+        <>
+          <SecondChoice />
+          <ThirdChoice/>
+        </>
+        }
       </Provider>
     </div>
   );

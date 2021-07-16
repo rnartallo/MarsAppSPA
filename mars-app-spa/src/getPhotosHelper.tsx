@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { Camera } from './getCameraHelper';
 
 export type Photo ={
     id: number,

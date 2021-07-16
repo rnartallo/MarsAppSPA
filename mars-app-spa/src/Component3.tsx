@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Component4 from './Component4'
 
 const Component3: React.FC = () => {
