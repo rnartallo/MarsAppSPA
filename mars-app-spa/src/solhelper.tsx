@@ -17,7 +17,7 @@ export async function getMaxSol(rovername: any): Promise<Mission> {
   };
 
 export async function getTotalPhotos(rovername:string, sol:number){
-    const response = await axios.get<Sollog>(`http://localhost:7000/rovers/${rovername}/${sol}`);
+    const response = await axios.get<Sollog>(`http://localhost:7000/${rovername}/${String(sol)}`);
     console.log(response.data);
     return response.data;
 }
