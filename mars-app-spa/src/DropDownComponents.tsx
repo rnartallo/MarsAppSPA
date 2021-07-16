@@ -5,8 +5,9 @@ import { getCameras, SelectOption } from "./getCameraHelper";
 import { getPhotos } from "./getPhotosHelper";
 import { Camera } from "./getCameraHelper";
 import { PhotoContext } from "./DropDownAndPhotoComponent";
-import { getMaxSol } from "./solhelper";
+import { getMaxSol, getTotalPhotos, Sollog } from "./solhelper";
 import { Mission } from "./solhelper";
+import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
 
 const roverNames: SelectOption[] = [
   { value: "Curiosity", label: "Curiosity" },
@@ -23,7 +24,9 @@ const RoverContext = createContext({
   sol: 0,
   setsol: (x:number)=>{},
   max_sol:0,
-  setmaxsol: (x:number)=>{}
+  setmaxsol: (x:number)=>{},
+  total_photos: 0,
+  settotalphotos: (x:number)=>{}
 });
 
 const DropDown: React.FC = () => {
@@ -34,6 +37,9 @@ const DropDown: React.FC = () => {
   var [rovername, setRoverName] = useState("");
   var [sol,setSol]=useState(1000);
   var [max_sol,setMaxSol]=useState(1000);
+  var [total_photos,setTotalPhotos]=useState(0);
+
+
   function setrovername(name: string) {
     setRoverName(name);
   }
@@ -43,12 +49,15 @@ const DropDown: React.FC = () => {
   function setmaxsol(x:number){
     setMaxSol(x)
   }
+  function settotalphotos(x:number){
+    setTotalPhotos(x)
+  }
 
   const Provider = RoverContext.Provider;
 
   return (
     <div>
-      <Provider value={{ cameralist, rovername, setcameralist, setrovername,sol,setsol,max_sol,setmaxsol }}>
+      <Provider value={{ cameralist, rovername, setcameralist, setrovername,sol,setsol,max_sol,setmaxsol,total_photos,settotalphotos }}>
         <FirstChoice />
         <SecondChoice />
         <ThirdChoice/>
@@ -58,7 +67,7 @@ const DropDown: React.FC = () => {
 };
 
 const FirstChoice: React.FC = () => {
-  let { cameralist, rovername, setcameralist, setrovername,max_sol,setmaxsol } =
+  let { cameralist, rovername, setcameralist, setrovername,max_sol,setmaxsol} =
     useContext(RoverContext);
   return (
     <div className="App-header">
@@ -80,17 +89,16 @@ const FirstChoice: React.FC = () => {
 };
 
 const SecondChoice: React.FC = ()=>{
-  let {sol,setsol,max_sol}=useContext(RoverContext);
+  let {rovername,sol,setsol,max_sol,total_photos,settotalphotos}=useContext(RoverContext);
     return(
-    <div>
+      <div>
       Select a sol in the range 0 to {max_sol}<div>
-      <NumericInput min={0} max={max_sol} value={sol} placeholder = {"Select sol in range"}onChange={async (response)=>{
-        console.log(max_sol)
-        console.log(sol)
-      const solval = response??100
-      setsol(solval)}}/>
-      </div>
-    </div>
+      <NumericInput min={0} max={max_sol} value={sol} placeholder = {"Select sol in range"}onChange={async  (response)=>{
+      const solval = response??100;
+      setsol(solval);}}
+      // let sollog: Sollog = await getTotalPhotos(rovername,sol)
+      // settotalphotos(sollog.total_photos)}}
+    /></div></div>
   )
 }
 
