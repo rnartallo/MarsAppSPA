@@ -94,10 +94,11 @@ const SecondChoice: React.FC = ()=>{
     return(
       <div>
       Select a sol in the range 0 to {max_sol}<div>
-      <NumericInput min={0} max={max_sol} value={sol} placeholder = {"Select sol in range"}onChange={async  (response)=>{
+      <NumericInput min={0} max={max_sol} value={sol} placeholder = {"Select sol in range"} 
+      onChange={async (response)=>{
       const solval = response??100;
       setsol(solval);
-      let sollog: Sollog = await getTotalPhotos(rovername,sol)
+      let sollog: Sollog = await getTotalPhotos(rovername,solval)
       settotalphotos(sollog.total_photos)}}
     /></div>
     There are {total_photos} photos from {rovername} on Sol {sol}</div>
