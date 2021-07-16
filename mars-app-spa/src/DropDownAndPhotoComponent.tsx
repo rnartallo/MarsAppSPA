@@ -41,7 +41,7 @@ const Photos: React.FC = () => {
     const len = Math.min(photoList.length,5);
     return(
         <div>
-            Displaying {len} results matching your search criteria
+            Displaying {len} of {photoList.length} results matching your search criteria
         {photoList.slice(0,len).map((photo) => (
         <figure>
         <img src={photo.img_src}/>
