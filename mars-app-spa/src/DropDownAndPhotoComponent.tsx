@@ -31,12 +31,26 @@ export const DropDownPhotos: React.FC = () => {
 
 const Photos: React.FC = () => {
     var { photoList } = useContext(PhotoContext);
+    const blankPhoto: Photo = {id: 0, sol: 0, img_src: '', earth_date: ''}
+    if (photoList.length ==0){
+        return (<div>There are no results matching your search criteria</div>)
+    }else if (photoList[0].id==0){
+        return (<div/>)
+    }
+    else{
     const len = Math.min(photoList.length,5);
     return(
         <div>
-        {photoList.slice(0,len).map((photo) => (<img src={photo.img_src}/>))}
+            Displaying {len} results matching your search criteria
+        {photoList.slice(0,len).map((photo) => (
+        <figure>
+        <img src={photo.img_src}/>
+        <figcaption > <b> PhotoID = {photo.id}, Sol = {photo.sol}, Earth Date ={photo.earth_date}  </b>
+        </figcaption>
+        </figure>
+        ))}
         </div>
-    )
+    )}
 
 
 }

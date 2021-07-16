@@ -53,6 +53,7 @@ const FirstChoice: React.FC = () => {
         onChange={async (response) => {
           setrovername(response ? response.value : "");
           cameralist = await getCameras(response?.value);
+          console.log(cameralist)
           setcameralist(cameralist);
         }}
       />

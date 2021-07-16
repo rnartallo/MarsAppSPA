@@ -9,7 +9,7 @@ export type Photo ={
 }
 
   export async function getPhotos(camera: any, rovername: string): Promise<Photo[]> {
-    const response = await axios.get<Photo[]>(`http://localhost:8000/rovers/${rovername}/camera/${camera}`);
+    const response = await axios.get<Photo[]>(`http://localhost:7000/rovers/${rovername}/camera/${camera}`);
     console.log(response.data);
     return response.data;
   };

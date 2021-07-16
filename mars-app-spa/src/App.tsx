@@ -7,6 +7,7 @@ import { getPhotos } from "./getPhotosHelper";
 import DropDown from "./DropDownComponents";
 import { DropDownPhotos } from "./DropDownAndPhotoComponent";
 
+
 const roverNames: SelectOption[] = [
   { value: "Curiosity", label: "Curiosity" },
   { value: "Spirit", label: "Spirit" },
