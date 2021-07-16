@@ -3,7 +3,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import Select from "react-select";
 import DropDown from "./DropDownComponents";
 import {Photo} from "./getPhotosHelper"
-
 export const PhotoContext = createContext({
     photoList: [{id: 0, sol: 0, img_src: '', earth_date: ''}],
     setphotolist: (value: Photo[]) => {},
